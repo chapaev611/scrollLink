@@ -1,0 +1,42 @@
+ <!-- HTML -->
+ <div class="header__nav">
+   <ul class="nav__menu">
+      <li class="menu__item"><a href="#" data-scroll='one' class="item__link active">Главная</a></li>
+      <li class="menu__item"><a href="#" data-scroll='two' class="item__link">Дизайн</a></li>
+      <li class="menu__item"><a href="#" data-scroll='three' class="item__link">Проекты</a></li>
+      <li class="menu__item"><a href="#" data-scroll='four' class="item__link">Отзывы</a></li>
+      <li class="menu__item"><a href="#" data-scroll='five' class="item__link">Галерея</a></li>
+      <li class="menu__item"><a href="#" data-scroll='six' class="item__link">Скачать</a></li>
+      <li class="menu__item"><a href="#" data-scroll='seven' class="item__link">Контакты</a></li>
+    </ul>
+ </div>
+ 
+ 
+<section class="section" data-anchor='one'>
+<section class="section" data-anchor='two'>
+<section class="section" data-anchor='three'>
+<section class="section" data-anchor='four'>
+<section class="section" data-anchor='five'>
+<section class="section" data-anchor='six'>
+<section class="section" data-anchor='seven'>
+
+
+ <!-- JS -->
+ $('.nav__menu a').on('click', function() {
+		var scrollAnchor = $(this).attr('data-scroll'),
+				scrollPoint = $('.section[data-anchor="' + scrollAnchor + '"]').offset().top;
+		$('body,html').animate({
+				scrollTop: scrollPoint
+		}, 500);
+		return false;
+});
+
+$(window).scroll(function() {
+var windscroll = $(window).scrollTop();
+	$('.section').each(function(i){
+		if($(this).position().top <= windscroll + 10) {
+			$('.nav__menu a.active').removeClass('active');
+			$('.nav__menu a').eq(i).addClass('active');
+		}
+	});
+}).scroll();
